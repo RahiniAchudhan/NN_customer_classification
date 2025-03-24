@@ -14,8 +14,8 @@ You are required to help the manager to predict the right group of the new custo
 
 ## Neural Network Model
 
-![Screenshot 2025-03-17 101223](https://github.com/user-attachments/assets/78e43137-3a29-4ebb-b821-d4174949e75a)
 
+![Screenshot 2025-03-24 111208](https://github.com/user-attachments/assets/09821aa0-c89f-4b79-a359-b7601576ff1a)
 
 ## DESIGN STEPS
 
@@ -52,7 +52,7 @@ class PeopleClassifier(nn.Module):
         self.fc2 = nn.Linear(32, 16)
         self.fc3 = nn.Linear(16, 8) # This layer was defined but never used
         self.fc4 = nn.Linear(16, 4) # Changed input size to 16 to match fc2 output
-       
+
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
@@ -60,6 +60,7 @@ class PeopleClassifier(nn.Module):
         #x = F.relu(self.fc3(x)) # Adding this line to use fc3 and connect to fc4 properly
         x = self.fc4(x) # Now fc4 receives input of size 16 from fc2
         return x
+
        
 ```
 ```python
@@ -70,7 +71,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 ```
 ```python
-def train_model(model, train_loader, criterion, optimizer, epochs):
+def train_model(model, train_loader, criterion, optimizer, epochs=10000):
     model.train()
     for epoch in range(epochs):
         for inputs, labels in train_loader:
@@ -97,18 +98,16 @@ def train_model(model, train_loader, criterion, optimizer, epochs):
 
 ### Confusion Matrix
 
-![Screenshot 2025-03-17 101943](https://github.com/user-attachments/assets/2854e4ed-396b-4fc4-b4c7-1df3b8c171e0)
+![Screenshot 2025-03-24 110301](https://github.com/user-attachments/assets/22be3a6c-c97a-4489-898f-676c4c01d832)
 
 
 ### Classification Report
 
-
-![Screenshot 2025-03-17 102021](https://github.com/user-attachments/assets/b4d08a88-67a9-4602-8b27-b203753c3fde)
-
+![Screenshot 2025-03-24 110404](https://github.com/user-attachments/assets/aca161ac-f8ea-4a71-8209-62676b190580)
 
 ### New Sample Data Prediction
 
-![Screenshot 2025-03-17 102058](https://github.com/user-attachments/assets/72af6712-b9f9-4aaf-809c-22b1c6cc7f6e)
+![Screenshot 2025-03-24 110513](https://github.com/user-attachments/assets/6ecb0c0f-ebea-4319-a720-bb8a0190b5ea)
 
 
 
